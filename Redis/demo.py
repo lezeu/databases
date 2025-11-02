@@ -23,15 +23,9 @@ def increment_user_score(username, amount):
     # Update the hash with new total_spent and last_updated
     r.hset(
         f"user:{username}",
-        mapping={
-            "total_spent": new_score,
-            "last_updated": datetime.now().isoformat()
-        },
+        mapping={"total_spent": new_score, "last_updated": datetime.now().isoformat()},
     )
-    print(
-        f"✓ {username} made a purchase of ${amount}. "
-        f"New total: ${new_score:,.2f}"
-    )
+    print(f"✓ {username} made a purchase of ${amount}. New total: ${new_score:,.2f}")
     return new_score
 
 

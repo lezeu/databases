@@ -1,5 +1,11 @@
 from connection import r
 
-removed = r.zrem("leaderboard_shop", "User2") # Deleting one user
 
-print(f"Removed {removed} member(s) from leaderboard_shop")
+def delete_user(username):
+    """Remove user from leaderboard"""
+    result = r.zrem("shopping:leaderboard", username)
+    if result:
+        print(f"✓ Removed {username} from leaderboard")
+    else:
+        print(f"User {username} not found")
+    return result

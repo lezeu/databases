@@ -1,9 +1,16 @@
 from connection import r
+from datetime import datetime
 
-## Inserting sample data into a sorted set for a leaderboard
-customers = { "User1": 120, "User2": 230, "User3": 180, "User4": 300 }
 
-for name, score in customers.items():
-    r.zadd("leaderboard_shop", {name: score})
+def add_user_score(user_id, username, total_spent):
+    """Add or update a user's score in the leaderboard"""
+    # Store user details in a hash
+    r.hset(f"user:{user_id}", mapping={
+        "username": username,
+        "total_spent": total_spent,
+        "last_updated": datetime.now().isoformat()
+    })
 
-print("Inserted scores into leaderboard_shop")
+    # Add to sorted set (leaderboard)
+    r.zadd("shopping:leaderboard", {username: total_spent})
+    print(f"✓ Added {username} with score {total_spent}")

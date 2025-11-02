@@ -4,6 +4,7 @@ This demonstrates the core leaderboard functionality
 """
 
 import time
+import random
 import matplotlib.pyplot as plt
 from datetime import datetime
 
@@ -43,20 +44,26 @@ if __name__ == "__main__":
     # # Clear previous data (for demo purposes)
     # r.delete("shopping:leaderboard")
     #
-    # # Add sample users
-    # print("\n1. Adding users to leaderboard...")
+    # # Add sample users (10,000 for BigData simulation)
+    # print("\n1. Adding 10,000 users to leaderboard...")
     # start_time = time.time()
-    # add_user_score(1, "Alice", 5000.00)
-    # add_user_score(2, "Bob", 3500.50)
-    # add_user_score(3, "Carol", 4200.75)
-    # add_user_score(4, "David", 1800.00)
-    # add_user_score(5, "Eve", 6500.25)
-    # add_user_score(6, "Frank", 2900.00)
-    # add_user_score(7, "Grace", 4800.50)
-    # add_user_score(8, "Henry", 3200.00)
-    # add_user_score(9, "Ivy", 5500.75)
-    # add_user_score(10, "Jack", 2100.00)
+    # for i in range(1, 10001):
+    #     username = f"User{i}"
+    #     score = round(random.uniform(1000, 10000), 2)
+    #     add_user_score(i, username, score)
     # operation_times["Add Users"] = time.time() - start_time
+    #
+    # # Add specific demo users
+    add_user_score(10001, "Alice", 8500.00)
+    # add_user_score(10002, "Bob", 3500.50)
+    # add_user_score(10003, "Carol", 4200.75)
+    # add_user_score(10004, "David", 1800.00)
+    # add_user_score(10005, "Eve", 6500.25)
+    # add_user_score(10006, "Frank", 2900.00)
+    # add_user_score(10007, "Grace", 4800.50)
+    # add_user_score(10008, "Henry", 3200.00)
+    # add_user_score(10009, "Ivy", 5500.75)
+    # add_user_score(10010, "Jack", 2100.00)
 
     # Get top users
     print("\n2. Getting top users...")
@@ -95,9 +102,9 @@ if __name__ == "__main__":
     operation_times["Get Top After Delete"] = time.time() - start_time
 
     # Get users in spending range
-    print("\n7. Finding users who spent $3000-$5000...")
+    print("\n7. Finding users who spent $3000-$4000...")
     start_time = time.time()
-    get_users_in_range(3000, 5000)
+    get_users_in_range(3000, 4000)
     operation_times["Get Users in Range"] = time.time() - start_time
 
     # Get leaderboard stats

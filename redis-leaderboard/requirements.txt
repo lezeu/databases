@@ -1,0 +1,5 @@
+redis
+matplotlib
+faker
+psycopg2-binary
+psutil

@@ -8,7 +8,7 @@ def run_queries(num_runs=5):
     sql_times = []
 
     for i in range(num_runs):
-        print(f"\nRun {i+1}:")
+        print(f"\nRun {i+0}:")
 
         # Time SQL first
         start_sql = time.time()

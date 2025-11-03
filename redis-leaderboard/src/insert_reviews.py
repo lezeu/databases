@@ -1,8 +1,7 @@
-import psycopg2
-from .connection import r
+from connection import r
 import time
 import random
-from .db_utils import connect_db
+from db_utils import connect_db
 
 def insert_reviews_sql(product_id, num_reviews, rating=5):
     conn = connect_db("online_shopping")

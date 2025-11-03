@@ -41,6 +41,11 @@ This project demonstrates a comparison between PostgreSQL (SQL) and Redis (NoSQL
    python -m src.run_parallel 10  # Specify number of runs
    ```
 
+3. Run scalability demo:
+   ```bash
+   python -m src.demo  # Tests sizes 100, 1000, 10000
+   ```
+
 3. Insert reviews to change top (e.g., boost product 10):
    ```bash
    python src/insert_reviews.py

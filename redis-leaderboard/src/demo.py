@@ -1,7 +1,7 @@
 import time
-from src.generate_data import generate_data
-from src.get_top_5_sql import get_top_5_sql
-from src.get_top_5_redis import get_top_5_redis
+from generate_data import generate_data
+from get_top_5_sql import get_top_5_sql
+from get_top_5_redis import get_top_5_redis
 
 
 def demo():

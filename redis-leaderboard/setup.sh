@@ -52,7 +52,7 @@ pip install -e . -q
 
 # Initialize database and generate sample data
 echo "📊 Initializing database and generating sample data (100 products)..."
-python src/generate_data.py 100
+cd src && python generate_data.py 100 && cd ..
 
 echo ""
 echo "✅ Setup complete!"
@@ -60,8 +60,8 @@ echo ""
 echo "🎯 Quick start commands:"
 echo "  cd redis-leaderboard"
 echo "  source venv/bin/activate"
-echo "  python src/demo.py                    # Run scalability demo"
-echo "  python -m src.run_parallel 5          # Compare performance"
-echo "  python src/generate_data.py 1000      # Generate more data"
+echo "  cd src && python demo.py                # Run scalability demo"
+echo "  cd src && python run_parallel.py 5     # Compare performance"
+echo "  cd src && python generate_data.py 1000 # Generate more data"
 echo ""
 echo "📚 See docs/ for more information"

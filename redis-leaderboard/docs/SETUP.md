@@ -43,7 +43,8 @@ pip install -e .
 ### Step 3: Initialize Data
 
 ```bash
-python src/generate_data.py 100
+cd src
+python generate_data.py 100
 ```
 
 ## 🔬 Running Experiments
@@ -52,14 +53,15 @@ python src/generate_data.py 100
 
 ```bash
 source venv/bin/activate  # If not already activated
-python -m src.run_parallel 5
+cd src
+python run_parallel.py 5
 ```
 
 **Output:**
 ```
-Average SQL query time: 0.0234s
-Average Redis query time: 0.0012s
-Redis is 19x faster!
+Average SQL query time: 0.0096s
+Average Redis query time: 0.0028s
+Redis is 3.4x faster!
 ```
 
 ### Scalability Test
@@ -67,7 +69,8 @@ Redis is 19x faster!
 Tests performance at 1K, 10K, and 100K products:
 
 ```bash
-python src/demo.py
+cd src
+python demo.py
 ```
 
 Shows how SQL degrades while Redis stays constant.
@@ -75,8 +78,9 @@ Shows how SQL degrades while Redis stays constant.
 ### Individual Queries
 
 ```bash
-python -m src.get_top_5_sql    # Query SQL only
-python -m src.get_top_5_redis  # Query Redis only
+cd src
+python get_top_5_sql.py    # Query SQL only
+python get_top_5_redis.py  # Query Redis only
 ```
 
 ### Simulate Real-time Updates
@@ -84,8 +88,9 @@ python -m src.get_top_5_redis  # Query Redis only
 Add 100 five-star reviews to boost a product:
 
 ```bash
-python src/insert_reviews.py
-python -m src.run_parallel 1  # See updated rankings
+cd src
+python insert_reviews.py
+python run_parallel.py 1  # See updated rankings
 ```
 
 ## 📊 Understanding Results
@@ -103,8 +108,9 @@ Size 100000: SQL 3.5s, Redis 1.5ms   (2,333x faster)
 ### Custom Dataset Sizes
 
 ```bash
-python src/generate_data.py 5000   # 5K products
-python src/generate_data.py 10000  # 10K products
+cd src
+python generate_data.py 5000   # 5K products
+python generate_data.py 10000  # 10K products
 ```
 
 **Note:** 100K products takes ~30-60 seconds to generate.
@@ -112,7 +118,8 @@ python src/generate_data.py 10000  # 10K products
 ### Statistical Analysis
 
 ```bash
-python -m src.run_parallel 100  # 100 runs for statistics
+cd src
+python run_parallel.py 100  # 100 runs for statistics
 ```
 
 ### Monitor Databases
@@ -147,14 +154,17 @@ docker ps  # Verify running
 
 ### Import/Module Errors
 
+Make sure you're in the `src/` directory when running scripts:
 ```bash
-pip install -e .  # Reinstall in dev mode
+cd redis-leaderboard/src
+python run_parallel.py 5
 ```
 
 ### Data Inconsistency
 
 ```bash
-python src/generate_data.py 100  # Regenerate data
+cd src
+python generate_data.py 100  # Regenerate data
 ```
 
 ### Redis Connection Test
@@ -185,3 +195,4 @@ find . -type d -name "__pycache__" -exec rm -r {} +
 - Use `docker stats` to monitor resource usage
 - Check Redis memory: `docker exec redis redis-cli INFO memory`
 - For large datasets, increase Docker memory allocation
+- Run scripts from the `src/` directory for proper imports

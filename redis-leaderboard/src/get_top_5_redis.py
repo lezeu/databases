@@ -1,4 +1,4 @@
-from src.connection import r
+from connection import r
 
 def get_top_5_redis():
     top_products = list(r.zrevrange("top_products:rating", 0, 4, withscores=True))  # type: ignore

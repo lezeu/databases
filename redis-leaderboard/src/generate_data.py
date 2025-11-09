@@ -1,7 +1,7 @@
-from src.connection import r
+from connection import r
 import random
 import time
-from src.db_utils import connect_db
+from db_utils import connect_db
 import psycopg2
 
 def create_database_if_not_exists():

@@ -34,7 +34,8 @@ pip install -r requirements.txt
 pip install -e .
 
 # Generate data
-python src/generate_data.py 100
+cd src
+python generate_data.py 100
 ```
 
 ### Run Experiments
@@ -42,19 +43,20 @@ python src/generate_data.py 100
 ```bash
 cd redis-leaderboard
 source venv/bin/activate
+cd src
 
 # Performance comparison
-python -m src.run_parallel 5
+python run_parallel.py 5
 
 # Scalability test
-python src/demo.py
+python demo.py
 ```
 
 **Expected Output:**
 ```
-Average SQL query time:   6.4ms
-Average Redis query time: 1.2ms
-Redis is 5x faster! 🚀
+Average SQL query time:   9.6ms
+Average Redis query time: 2.8ms
+Redis is 3.4x faster! 🚀
 ```
 
 ## 📊 Performance Results

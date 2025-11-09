@@ -1,6 +1,6 @@
 import time
-from src.get_top_5_redis import get_top_5_redis
-from src.get_top_5_sql import get_top_5_sql
+from get_top_5_redis import get_top_5_redis
+from get_top_5_sql import get_top_5_sql
 
 
 def run_queries(num_runs=5):

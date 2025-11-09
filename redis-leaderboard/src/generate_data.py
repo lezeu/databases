@@ -1,9 +1,78 @@
-from connection import r
+from src.connection import r
 import random
 import time
-from db_utils import connect_db
+from src.db_utils import connect_db
+import psycopg2
+
+def create_database_if_not_exists():
+    """Create the online_shopping database if it doesn't exist"""
+    try:
+        conn = psycopg2.connect(
+            host="localhost",
+            port=5432,
+            database="postgres",
+            user="postgres",
+            password="password"
+        )
+        conn.autocommit = True
+        with conn.cursor() as cur:
+            # Check if database exists
+            cur.execute("SELECT 1 FROM pg_database WHERE datname='online_shopping'")
+            exists = cur.fetchone()
+            if not exists:
+                cur.execute("CREATE DATABASE online_shopping")
+                print("Database 'online_shopping' created")
+        conn.close()
+    except Exception as e:
+        print(f"Error creating database: {e}")
+
+def create_schema():
+    """Create tables in the database"""
+    conn = connect_db("online_shopping")
+    with conn.cursor() as cur:
+        # Create tables
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                username VARCHAR(50) UNIQUE NOT NULL,
+                email VARCHAR(100) UNIQUE NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS products (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                price DECIMAL(10,2) NOT NULL,
+                description TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS orders (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                total DECIMAL(10,2) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS reviews (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
+                rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+                comment TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+    conn.commit()
+    conn.close()
+    print("Schema created successfully")
 
 def generate_sql_data(size=10):
+    create_database_if_not_exists()
+    create_schema()
     conn = connect_db("online_shopping")
     with conn.cursor() as cur:
         # Clear existing data

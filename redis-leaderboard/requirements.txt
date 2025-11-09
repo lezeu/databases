@@ -3,3 +3,4 @@ matplotlib
 faker
 psycopg2-binary
 psutil
+pytest

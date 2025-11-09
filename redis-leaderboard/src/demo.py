@@ -1,7 +1,7 @@
 import time
-from generate_data import generate_data
-from get_top_5_sql import get_top_5_sql
-from get_top_5_redis import get_top_5_redis
+from src.generate_data import generate_data
+from src.get_top_5_sql import get_top_5_sql
+from src.get_top_5_redis import get_top_5_redis
 
 
 def demo():
@@ -12,12 +12,12 @@ def demo():
     for size in sizes:
         print(f"\n=== Demo for size {size} ===")
 
-        # # Generate data
-        # print("Generating data...")
-        # start_gen = time.time()
-        # generate_data(size)
-        # gen_time = time.time() - start_gen
-        # print(f"Data generation time: {gen_time:.2f}s")
+        # Generate data
+        print("Generating data...")
+        start_gen = time.time()
+        generate_data(size)
+        gen_time = time.time() - start_gen
+        print(f"Data generation time: {gen_time:.2f}s")
 
         # Run queries 3 times
         print("Running queries...")

@@ -1,4 +1,4 @@
-from db_utils import connect_db
+from src.db_utils import connect_db
 
 def get_top_5_sql():
     conn = connect_db("online_shopping")

@@ -1,43 +1,63 @@
 # Redis vs PostgreSQL: Performance Comparison for Leaderboards
 
-A practical demonstration showing **why Redis is 100-2000x faster** than SQL for real-time leaderboard and ranking queries.
+A practical demonstration showing **why Redis is 10-2000x faster** than SQL for real-time leaderboard queries.
 
 ## 🎯 What This Project Does
 
-This project compares PostgreSQL (traditional SQL) and Redis (in-memory database) for a common use case: **displaying top-rated products in an e-commerce application**.
+Compares PostgreSQL and Redis for a common e-commerce use case: **displaying top-rated products**.
 
-**The Question:** Why can't SQL handle real-time leaderboards efficiently?
+**The Question:** Why can't SQL handle real-time leaderboards efficiently?  
+**The Answer:** See for yourself!
 
-**The Answer:** See for yourself! This project shows the dramatic performance difference at scale.
+## ⚡ Quick Start
 
-## 🚀 Quick Start (2 Minutes)
+### Automated Setup (Recommended)
 
 ```bash
-# 1. Start databases
+cd redis-leaderboard
+./setup.sh
+```
+
+This handles everything: starts databases, installs dependencies, generates 100 products.
+
+### Manual Setup
+
+```bash
+# Start databases
 docker-compose up -d
 
-# 2. Install dependencies
+# Setup Python
 cd redis-leaderboard
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+pip install -e .
 
-# 3. Generate data
-python src/generate_data.py 1000
+# Generate data
+python src/generate_data.py 100
+```
 
-# 4. Run comparison
+### Run Experiments
+
+```bash
+cd redis-leaderboard
+source venv/bin/activate
+
+# Performance comparison
 python -m src.run_parallel 5
+
+# Scalability test
+python src/demo.py
 ```
 
 **Expected Output:**
 ```
-Average SQL query time: 0.0450s  (45ms)
-Average Redis query time: 0.0012s (1.2ms)
-
-Redis is 37x faster! 🚀
+Average SQL query time:   6.4ms
+Average Redis query time: 1.2ms
+Redis is 5x faster! 🚀
 ```
 
-## 📊 Key Results
-
-### Performance at Different Scales
+## 📊 Performance Results
 
 | Dataset Size | SQL Time | Redis Time | Speedup |
 |--------------|----------|------------|---------|

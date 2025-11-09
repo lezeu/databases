@@ -19,26 +19,48 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+
+# Virtual environments
 venv/
 env/
 .venv
+ENV/
+env.bak/
+venv.bak/
 
-# Caches
-.mypy_cache/
-.pytest_cache/
-
-# Redis
-dump.rdb
-
-# IDE
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
+*.log
+
+# Type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Redis
+dump.rdb
+*.rdb
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # Secrets and environment files
 .env
@@ -46,12 +68,17 @@ Thumbs.db
 .env.*.local
 secrets/
 *.secret
-*.key
 
-# Certificates
+# Certificates and keys
 *.crt
 *.pem
 *.key
 *.p12
 *.pfx
 digicert.crt
+
+# Project specific
+redis-leaderboard/venv/
+redis-leaderboard/.pytest_cache/
+redis-leaderboard/.mypy_cache/
+redis-leaderboard/*.egg-info/

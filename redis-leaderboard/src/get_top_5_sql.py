@@ -6,7 +6,7 @@ def get_top_5_sql():
         cur.execute("""
             SELECT p.id, p.name, AVG(r.rating) as avg_rating
             FROM products p
-            LEFT JOIN reviews r ON p.id = r.product_id
+            INNER JOIN reviews r ON p.id = r.product_id
             GROUP BY p.id, p.name
             ORDER BY avg_rating DESC
             LIMIT 5

@@ -139,7 +139,10 @@ def generate_redis_data(size=10):
     print(f"Redis data generated for size {size}")
 
 def generate_data(size=10):
+    # Set random seed for reproducibility
+    random.seed(42)
     generate_sql_data(size)
+    random.seed(42)  # Reset seed for Redis to match SQL
     generate_redis_data(size)
 
 if __name__ == "__main__":

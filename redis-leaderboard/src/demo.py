@@ -6,7 +6,6 @@ from src.get_top_5_redis import get_top_5_redis
 
 def demo():
     sizes = [1000, 10000, 100000]  # Adjusted for feasibility
-    # sizes = [100000]  # Adjusted for feasibility
     results = {}
 
     for size in sizes:

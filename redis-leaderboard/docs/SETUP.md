@@ -57,11 +57,19 @@ cd src
 python run_parallel.py 5
 ```
 
+**With Visualization:**
+```bash
+python run_parallel.py 5 --plot
+```
+This generates a `query_comparison.png` plot showing the performance differences.
+
 **Output:**
 ```
 Average SQL query time: 0.0096s
 Average Redis query time: 0.0028s
 Redis is 3.4x faster!
+
+📊 Plot saved to: ../query_comparison.png
 ```
 
 ### Scalability Test
@@ -74,6 +82,25 @@ python demo.py
 ```
 
 Shows how SQL degrades while Redis stays constant.
+
+### Comprehensive Performance Visualization
+
+Generate detailed performance comparison plots across multiple dataset sizes:
+
+```bash
+cd src
+python visualize_performance.py
+```
+
+This will:
+- Test performance at 100, 500, 1K, 5K, and 10K products
+- Generate 3 comprehensive plots showing:
+  - Query time vs dataset size
+  - Side-by-side comparison
+  - Speedup factor over dataset size
+- Save results to `performance_comparison.png`
+
+**Note:** This takes 5-10 minutes as it generates multiple datasets.
 
 ### Individual Queries
 

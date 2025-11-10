@@ -48,8 +48,14 @@ cd src
 # Performance comparison
 python run_parallel.py 5
 
+# With visualization plot
+python run_parallel.py 5 --plot
+
 # Scalability test
 python demo.py
+
+# Comprehensive visualization (all sizes)
+python visualize_performance.py
 ```
 
 **Expected Output:**

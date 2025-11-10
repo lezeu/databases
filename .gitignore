@@ -82,3 +82,5 @@ redis-leaderboard/venv/
 redis-leaderboard/.pytest_cache/
 redis-leaderboard/.mypy_cache/
 redis-leaderboard/*.egg-info/
+redis-leaderboard/*.png
+redis-leaderboard/plots/

@@ -1,10 +1,7 @@
-import psycopg2
+"""PostgreSQL connection utilities."""
+from config import get_postgres_connection
+
 
 def connect_db(db_name):
-    return psycopg2.connect(
-        host="localhost",
-        port=5432,
-        database=db_name,
-        user="postgres",
-        password="password"
-    )
+    """Get PostgreSQL connection (legacy wrapper)."""
+    return get_postgres_connection(db_name)

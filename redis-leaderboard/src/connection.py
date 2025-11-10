@@ -1,4 +1,6 @@
-import redis
+"""Redis connection module."""
+from config import get_redis_connection
 
-# Redis connection
-r = redis.Redis(host='localhost', port=6379, db=0)
+# Singleton instance for backward compatibility
+r = get_redis_connection()
+

@@ -57,19 +57,11 @@ cd src
 python run_parallel.py 5
 ```
 
-**With Visualization:**
-```bash
-python run_parallel.py 5 --plot
-```
-This generates a `query_comparison.png` plot showing the performance differences.
-
 **Output:**
 ```
 Average SQL query time: 0.0096s
 Average Redis query time: 0.0028s
 Redis is 3.4x faster!
-
-📊 Plot saved to: ../query_comparison.png
 ```
 
 ### Scalability Test

@@ -16,7 +16,7 @@ def demo():
         start_gen = time.time()
         generate_data(size)
         gen_time = time.time() - start_gen
-        print(f"Data generation time: {gen_time:.2f}s")
+        print(f"Data generation time: {gen_time*1000:.2f}ms")
 
         # Run queries 3 times
         print("Running queries...")
@@ -37,8 +37,8 @@ def demo():
         avg_sql = sum(sql_times) / len(sql_times)
         avg_redis = sum(redis_times) / len(redis_times)
 
-        print(f"Average SQL time: {avg_sql:.4f}s")
-        print(f"Average Redis time: {avg_redis:.4f}s")
+        print(f"Average SQL time: {avg_sql*1000:.2f}ms")
+        print(f"Average Redis time: {avg_redis*1000:.2f}ms")
 
         results[size] = {
             # "gen_time": gen_time,
@@ -48,8 +48,7 @@ def demo():
 
     print("\n=== Summary ===")
     for size, data in results.items():
-        # print(f"Size {size}: Gen {data['gen_time']:.2f}s, SQL {data['avg_sql']:.4f}s, Redis {data['avg_redis']:.4f}s")
-        print(f"Size {size}: SQL {data['avg_sql']:.4f}s, Redis {data['avg_redis']:.4f}s")
+        print(f"Size {size}: SQL {data['avg_sql']*1000:.2f}ms, Redis {data['avg_redis']*1000:.2f}ms")
 
 if __name__ == "__main__":
     demo()

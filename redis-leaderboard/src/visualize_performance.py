@@ -44,7 +44,8 @@ def create_performance_plots():
     """Generate comparison plots between SQL and Redis."""
     
     # Test different data sizes
-    sizes = [100, 500, 1000, 5000, 10000]
+    sizes = [100, 500, 1000, 5000, 10000, 50000, 100000]
+    # sizes = [100, 500, 1000, 5000, 10000]
     sql_times = []
     redis_times = []
     

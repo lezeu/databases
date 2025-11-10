@@ -112,7 +112,7 @@ class PostgreSQLDataGenerator:
                 rating = random.randint(1, 5)
                 cur.execute(
                     "INSERT INTO reviews (user_id, product_id, rating, comment) VALUES (%s, %s, %s, %s)",
-                    (user_id, product_id, rating, f"Review comment")
+                    (user_id, product_id, rating, "Review comment")
                 )
         
         conn.commit()
